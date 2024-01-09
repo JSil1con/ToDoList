@@ -14,7 +14,7 @@ namespace ToDoList.Classes
         private readonly StreamWriter _streamWriter;
         private readonly StreamReader _streamReader;
 
-        public FileHandler(string name, string path)
+        public FileHandler(string path)
         {
             _path = path;
 
