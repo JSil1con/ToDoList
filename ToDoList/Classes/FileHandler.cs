@@ -40,6 +40,12 @@ namespace ToDoList.Classes
             return File.ReadAllText(path);
         }
 
+        public static bool IsEmpty(string path)
+        {
+            if (new FileInfo(path).Length > 0) return false;
+            return true;
+        }
+
         public string Read()
         {
             return _streamReader.ReadToEnd();

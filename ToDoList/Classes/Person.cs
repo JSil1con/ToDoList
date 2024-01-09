@@ -11,9 +11,15 @@ namespace ToDoList.Classes
         public string Name { get; set; }
         private Dictionary<string, Event> _events;
 
-        public Person()
+        public Person(string name)
         {
+            Name = name;
+        }
 
+        public Person(string name, Dictionary<string, Event> events)
+        {
+            Name = name;
+            _events = events;
         }
     }
 }
