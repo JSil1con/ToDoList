@@ -1,9 +1,16 @@
 ﻿using ToDoList.Classes;
-using System.IO;
-using System.Reflection;
 
+string outputPath = "output.json";
+string content = "";
 
-FileHandler fileHander = new FileHandler("output.json");
+if (FileHandler.FileExists(outputPath))
+{
+    content = FileHandler.Read(outputPath);
+}
+
+FileHandler fileHandler = new FileHandler(outputPath);
+
+Console.WriteLine(content);
 
 
 Console.ReadLine();

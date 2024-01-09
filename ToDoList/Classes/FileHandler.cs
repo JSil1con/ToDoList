@@ -24,15 +24,20 @@ namespace ToDoList.Classes
             _streamReader = new StreamReader(_fileStream);
         }
 
-        private bool FileExists()
+        public static bool FileExists(string path)
         {
-            if (File.Exists(_path)) return true;
+            if (File.Exists(path)) return true;
             return false;
         }
 
         public void InsertIntoFile(string content)
         {
             _streamWriter.Write(content);
+        }
+
+        public static string Read(string path)
+        {
+            return File.ReadAllText(path);
         }
 
         public string Read()
