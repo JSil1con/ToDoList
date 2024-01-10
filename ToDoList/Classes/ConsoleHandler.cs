@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Globalization;
 
 namespace ToDoList.Classes
 {
@@ -20,6 +21,22 @@ namespace ToDoList.Classes
             Console.WriteLine("2) Edit task");
             Console.WriteLine("3) Remove task");
             return Console.ReadLine();
+        }
+
+        public static Dictionary<string, object> GetEventInfo()
+        {
+            Dictionary<string, object> eventInfo = new Dictionary<string, object>();
+
+            Console.WriteLine("Type event's name");
+            eventInfo.Add("name", Console.ReadLine());
+
+            Console.WriteLine("Type event's date (dd.MM.yyyy HH:mm:ss:)");
+            eventInfo.Add("dateTime", DateTime.Parse(Console.ReadLine()));
+
+            Console.WriteLine("Type event's priority (can be empty)");
+            eventInfo.Add("priority", Console.ReadLine());
+
+            return eventInfo;
         }
     }
 }

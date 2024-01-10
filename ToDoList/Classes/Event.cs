@@ -12,7 +12,7 @@ namespace ToDoList.Classes
         public string? Priority { get; set; }
         public DateTime Date { get; set; }
 
-        public Event(string name, string? priority, DateTime dateTime)
+        public Event(string name, DateTime dateTime, string priority)
         {
             Name = name;
             Priority = priority;

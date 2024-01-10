@@ -10,16 +10,19 @@ if (FileHandler.FileExists(outputPath) && !FileHandler.IsEmpty(outputPath))
 }
 else
 {
-    person = new Person(ConsoleHandler.GetName());
+    //person = new Person(ConsoleHandler.GetName());
 }
+
+//delete later
+person = new Person(ConsoleHandler.GetName());
 
 string option = ConsoleHandler.GetOptions();
 
 if (option == "1")
 {
     //Add task
-
-
+    Dictionary<string, object> eventInfo = ConsoleHandler.GetEventInfo();
+    person.AddEvent((string)eventInfo["name"], (DateTime)eventInfo["dateTime"], (string)eventInfo["priority"]);
 }
 else if(option == "2")
 {

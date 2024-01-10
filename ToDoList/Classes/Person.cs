@@ -9,7 +9,7 @@ namespace ToDoList.Classes
     internal class Person
     {
         public string Name { get; set; }
-        private Dictionary<string, Event> _events;
+        private Dictionary<string, Event> _events = new Dictionary<string, Event>();
 
         public Person(string name)
         {
@@ -20,6 +20,16 @@ namespace ToDoList.Classes
         {
             Name = name;
             _events = events;
+        }
+
+        public void AddEvent(string nameEvent, DateTime dateTime)
+        {
+            _events.Add(nameEvent, new Event(nameEvent, dateTime));
+        }
+
+        public void AddEvent(string nameEvent, DateTime dateTime, string priority)
+        {
+            _events.Add(nameEvent, new Event(nameEvent, dateTime, priority));
         }
     }
 }
