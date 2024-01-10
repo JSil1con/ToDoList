@@ -10,8 +10,7 @@ if (FileHandler.FileExists(outputPath) && !FileHandler.IsEmpty(outputPath))
 }
 else
 {
-    Console.WriteLine("Type your name");
-    person = new Person(Console.ReadLine());
+    person = new Person(ConsoleHandler.GetName());
 }
 
 FileHandler fileHandler = new FileHandler(outputPath);
