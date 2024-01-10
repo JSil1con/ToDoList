@@ -24,5 +24,10 @@ namespace ToDoList.Classes
             Name = name;
             Date = dateTime;
         }
+
+        public void PrintEventInfo()
+        {
+            Console.WriteLine("name: {0} date: {1} priority {2}", Name, Date.ToString(), Priority);
+        }
     }
 }

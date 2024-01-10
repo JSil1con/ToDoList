@@ -42,5 +42,14 @@ namespace ToDoList.Classes
         {
             _events.Remove(nameEvent);
         }
+
+        public void ViewTasks()
+        {
+            foreach (Event item in _events.Values)
+            {
+                item.PrintEventInfo();
+                Console.WriteLine("test");
+            }
+        }
     }
 }
