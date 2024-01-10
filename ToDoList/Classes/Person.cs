@@ -32,6 +32,12 @@ namespace ToDoList.Classes
             _events.Add(nameEvent, new Event(nameEvent, dateTime, priority));
         }
 
+        public void EditEvent(Dictionary<string, object> eventInfo)
+        {
+            RemoveEvent((string)eventInfo["editedEvent"]);
+            AddEvent((string)eventInfo["name"], (DateTime)eventInfo["dateTime"], (string)eventInfo["priority"]);
+        }
+
         public void RemoveEvent(string nameEvent)
         {
             _events.Remove(nameEvent);
