@@ -31,5 +31,10 @@ namespace ToDoList.Classes
         {
             _events.Add(nameEvent, new Event(nameEvent, dateTime, priority));
         }
+
+        public void RemoveEvent(string nameEvent)
+        {
+            _events.Remove(nameEvent);
+        }
     }
 }

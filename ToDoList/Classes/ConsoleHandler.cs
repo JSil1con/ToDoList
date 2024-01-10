@@ -23,7 +23,7 @@ namespace ToDoList.Classes
             return Console.ReadLine();
         }
 
-        public static Dictionary<string, object> GetEventInfo()
+        public static Dictionary<string, object> CreateEvent()
         {
             Dictionary<string, object> eventInfo = new Dictionary<string, object>();
 
@@ -37,6 +37,12 @@ namespace ToDoList.Classes
             eventInfo.Add("priority", Console.ReadLine());
 
             return eventInfo;
+        }
+
+        public static string RemoveEvent()
+        {
+            Console.WriteLine("Type event's name you want to delete");
+            return Console.ReadLine();
         }
     }
 }
