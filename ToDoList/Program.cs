@@ -13,6 +13,23 @@ else
     person = new Person(ConsoleHandler.GetName());
 }
 
+string option = ConsoleHandler.GetOptions();
+
+if (option == "1")
+{
+    //Add task
+
+
+}
+else if(option == "2")
+{
+    //Edit task
+}
+else if(option == "3")
+{
+    //Remove task
+}
+
 FileHandler fileHandler = new FileHandler(outputPath);
 
 Console.WriteLine(content);

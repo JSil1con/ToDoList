@@ -13,5 +13,13 @@ namespace ToDoList.Classes
             Console.Write("Type your name => ");
             return Console.ReadLine();
         }
+
+        public static string GetOptions()
+        {
+            Console.WriteLine("1) Add task");
+            Console.WriteLine("2) Edit task");
+            Console.WriteLine("3) Remove task");
+            return Console.ReadLine();
+        }
     }
 }
