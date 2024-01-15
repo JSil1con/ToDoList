@@ -24,15 +24,15 @@ namespace ToDoList.Classes
             return Console.ReadLine();
         }
 
-        public static Dictionary<string, object> CreateEvent()
+        public static Dictionary<string, string> CreateEvent()
         {
-            Dictionary<string, object> eventInfo = new Dictionary<string, object>();
+            Dictionary<string, string> eventInfo = new Dictionary<string, string>();
 
             Console.WriteLine("Type event's name");
             eventInfo.Add("name", Console.ReadLine());
 
             Console.WriteLine("Type event's date (dd.MM.yyyy HH:mm:ss:)");
-            eventInfo.Add("dateTime", DateTime.Parse(Console.ReadLine()));
+            eventInfo.Add("dateTime", Console.ReadLine());
 
             Console.WriteLine("Type event's priority (can be empty)");
             eventInfo.Add("priority", Console.ReadLine());
@@ -40,12 +40,12 @@ namespace ToDoList.Classes
             return eventInfo;
         }
 
-        public static Dictionary<string, object> EditEvent()
+        public static Dictionary<string, string> EditEvent()
         {
             Console.WriteLine("Type event's name you want to delete");
             string editedEvent = Console.ReadLine();
 
-            Dictionary<string, object> eventInfo = CreateEvent();
+            Dictionary<string, string> eventInfo = CreateEvent();
             eventInfo.Add("editedEvent", editedEvent);
 
             return eventInfo;

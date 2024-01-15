@@ -22,20 +22,20 @@ namespace ToDoList.Classes
             _events = events;
         }
 
-        public void AddEvent(string nameEvent, DateTime dateTime)
+        public void AddEvent(string nameEvent, string dateTime)
         {
-            _events.Add(nameEvent, new Event(nameEvent, dateTime));
+            _events.Add(nameEvent, new Event(nameEvent, DateTime.Parse(dateTime)));
         }
 
-        public void AddEvent(string nameEvent, DateTime dateTime, string priority)
+        public void AddEvent(string nameEvent, string dateTime, string priority)
         {
-            _events.Add(nameEvent, new Event(nameEvent, dateTime, priority));
+            _events.Add(nameEvent, new Event(nameEvent, DateTime.Parse(dateTime), priority));
         }
 
-        public void EditEvent(Dictionary<string, object> eventInfo)
+        public void EditEvent(Dictionary<string, string> eventInfo)
         {
-            RemoveEvent((string)eventInfo["editedEvent"]);
-            AddEvent((string)eventInfo["name"], (DateTime)eventInfo["dateTime"], (string)eventInfo["priority"]);
+            RemoveEvent(eventInfo["editedEvent"]);
+            AddEvent(eventInfo["name"], eventInfo["dateTime"], eventInfo["priority"]);
         }
 
         public void RemoveEvent(string nameEvent)

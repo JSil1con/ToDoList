@@ -26,13 +26,13 @@ while (true)
     if (option == "1")
     {
         //Add task
-        Dictionary<string, object> eventInfo = ConsoleHandler.CreateEvent();
-        person.AddEvent((string)eventInfo["name"], (DateTime)eventInfo["dateTime"], (string)eventInfo["priority"]);
+        Dictionary<string, string> eventInfo = ConsoleHandler.CreateEvent();
+        person.AddEvent(eventInfo["name"], eventInfo["dateTime"], eventInfo["priority"]);
     }
     else if(option == "2")
     {
         //Edit task
-        Dictionary<string, object> eventInfo = ConsoleHandler.EditEvent();
+        Dictionary<string, string> eventInfo = ConsoleHandler.EditEvent();
         person.EditEvent(eventInfo);
     }
     else if(option == "3")
