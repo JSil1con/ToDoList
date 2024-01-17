@@ -10,18 +10,11 @@ namespace ToDoList.Classes
     internal class FileHandler
     {
         private readonly string _path;
-        private readonly FileStream _fileStream;
         private readonly StreamWriter _streamWriter;
-        private readonly StreamReader _streamReader;
 
         public FileHandler(string path)
         {
             _path = path;
-
-            _fileStream = File.Create(_path);
-
-            _streamWriter = new StreamWriter(_fileStream);
-            _streamReader = new StreamReader(_fileStream);
         }
 
         public static bool FileExists(string path)
@@ -30,9 +23,12 @@ namespace ToDoList.Classes
             return false;
         }
 
-        public void InsertIntoFile(string content)
+        public void Write(string content)
         {
-            _streamWriter.Write(content);
+            using (StreamWriter writer = new StreamWriter(_path))
+            {
+                writer.Write(content);
+            }
         }
 
         public static string Read(string path)
@@ -48,7 +44,7 @@ namespace ToDoList.Classes
 
         public string Read()
         {
-            return _streamReader.ReadToEnd();
+            return File.ReadAllText(_path);
         }
     }
 }

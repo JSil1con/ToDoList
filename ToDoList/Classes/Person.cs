@@ -4,22 +4,26 @@ using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Newtonsoft.Json;
 
 namespace ToDoList.Classes
 {
     internal class Person
     {
-        public string Name { get; set; }
+        [JsonProperty]
+        private string _name;
+
+        [JsonProperty]
         private Dictionary<string, Event> _events = new Dictionary<string, Event>();
 
         public Person(string name)
         {
-            Name = name;
+            _name = name;
         }
 
         public Person(string name, Dictionary<string, Event> events)
         {
-            Name = name;
+            _name = name;
             _events = events;
         }
 
