@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -29,7 +30,8 @@ namespace ToDoList.Classes
 
         public void AddEvent(string nameEvent, string dateTime, string priority)
         {
-            _events.Add(nameEvent, new Event(nameEvent, DateTime.Parse(dateTime), priority));
+            string dateTimeFormat = "dd.MM.yyyy HH:mm:ss";
+            _events.Add(nameEvent, new Event(nameEvent, DateTime.ParseExact(dateTime, dateTimeFormat, CultureInfo.InvariantCulture), priority));
         }
 
         public void EditEvent(Dictionary<string, string> eventInfo)
