@@ -16,8 +16,8 @@ while (true)
 
     if (FileHandler.FileExists(outputPath) && !FileHandler.IsEmpty(outputPath))
     {
-        Console.WriteLine(FileHandler.Read(outputPath));
-        person = JsonConvert.DeserializeObject<Person>(FileHandler.Read(outputPath));
+        string jsonResponse = FileHandler.Read(outputPath);
+        person = JsonConvert.DeserializeObject<Person>(jsonResponse, jsonSettings);
     }
     else
     {
@@ -52,7 +52,7 @@ while (true)
         person.ViewTasks();
     }
 
-    fileHandler.Write(JsonConvert.SerializeObject(person, jsonSettings));
+    fileHandler.Write(JsonConvert.SerializeObject(person, jsonSettings));   
 
     Console.ReadLine();
 }

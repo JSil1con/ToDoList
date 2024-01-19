@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 
 namespace ToDoList.Classes
@@ -12,16 +13,11 @@ namespace ToDoList.Classes
         public string? Priority { get; set; }
         public DateTime Date { get; set; }
 
+        [JsonConstructor]
         public Event(string name, DateTime dateTime, string priority)
         {
             Name = name;
             Priority = priority;
-            Date = dateTime;
-        }
-
-        public Event(string name, DateTime dateTime)
-        {
-            Name = name;
             Date = dateTime;
         }
 
