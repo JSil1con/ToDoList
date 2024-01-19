@@ -21,6 +21,7 @@ namespace ToDoList.Classes
             Console.WriteLine("2) Edit task");
             Console.WriteLine("3) Remove task");
             Console.WriteLine("4) View tasks");
+            Console.WriteLine("5) End");
             return Console.ReadLine();
         }
 

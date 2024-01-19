@@ -51,8 +51,10 @@ while (true)
         //View tasks
         person.ViewTasks();
     }
+    else if (option == "5")
+    {
+        break;
+    }
 
     fileHandler.Write(JsonConvert.SerializeObject(person, jsonSettings));   
-
-    Console.ReadLine();
 }
