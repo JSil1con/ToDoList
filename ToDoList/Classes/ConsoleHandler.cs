@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Globalization;
+using Microsoft.VisualBasic.FileIO;
 
 namespace ToDoList.Classes
 {
@@ -22,7 +23,29 @@ namespace ToDoList.Classes
             Console.WriteLine("3) Remove task");
             Console.WriteLine("4) View tasks");
             Console.WriteLine("5) End");
-            return Console.ReadLine();
+            while (true)
+            {
+                bool success = true;
+                string option = "";
+                try
+                {
+                    option = Console.ReadLine();
+                    Int32.Parse(option);
+                }
+                catch
+                {
+                    Console.WriteLine("It has to be number");
+                    success = false;
+                }
+                if (success)
+                { 
+                    if (Int32.Parse(option) >= 0 && Int32.Parse(option) <= 5)
+                    {
+                        return option;
+                    }
+                    Console.WriteLine("Only 0/1/2/3/4/5 are allowed");
+                }
+            }
         }
 
         public static Dictionary<string, string> CreateEvent()
