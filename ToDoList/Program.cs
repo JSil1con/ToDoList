@@ -51,11 +51,18 @@ while (true)
     }
     else if (option == "4")
     {
-        //View tasks
+        //View all tasks
         Console.Clear();
-        person.ViewTasks();
+        person.ViewAllEvents();
     }
     else if (option == "5")
+    {
+        //View tasks by name
+        string taskName = ConsoleHandler.GetEventsByName(person);
+        Console.Clear();
+        person.ViewEventsByName(taskName);
+    }
+    else if (option == "6")
     {
         break;
     }

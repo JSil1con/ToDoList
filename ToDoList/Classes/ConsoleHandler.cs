@@ -21,8 +21,9 @@ namespace ToDoList.Classes
             Console.WriteLine("1) Add task");
             Console.WriteLine("2) Edit task");
             Console.WriteLine("3) Remove task");
-            Console.WriteLine("4) View tasks");
-            Console.WriteLine("5) End");
+            Console.WriteLine("4) View all tasks");
+            Console.WriteLine("5) View tasks by name");
+            Console.WriteLine("6) End");
             while (true)
             {
                 bool success = true;
@@ -39,7 +40,7 @@ namespace ToDoList.Classes
                 }
                 if (success)
                 { 
-                    if (Int32.Parse(option) >= 0 && Int32.Parse(option) <= 5)
+                    if (Int32.Parse(option) >= 0 && Int32.Parse(option) <= 6)
                     {
                         return option;
                     }
@@ -189,6 +190,21 @@ namespace ToDoList.Classes
                 }
             }
             return idRemovedEvent;
+        }
+
+        public static string GetEventsByName(Person person)
+        {
+            Console.WriteLine("Entry event's name you are looking for");
+            string taskName = "";
+            while (true)
+            {
+                taskName = Console.ReadLine();
+                if (person.EventExists(taskName))
+                {
+                    return taskName;
+                }
+                Console.WriteLine("This event doesn't exist");
+            }
         }
     }
 }

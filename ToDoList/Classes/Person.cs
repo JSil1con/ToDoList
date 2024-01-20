@@ -42,7 +42,7 @@ namespace ToDoList.Classes
             Events.Remove(idEvent);
         }
 
-        public void ViewTasks()
+        public void ViewAllEvents()
         {
             foreach (Event item in Events.Values)
             {
@@ -55,10 +55,40 @@ namespace ToDoList.Classes
             return Events.Count;
         }
 
-        public bool EventExists(int id)
+        public bool EventExists<T>(T parameter)
         {
-            if (Events.ContainsKey(id)) return true;
+            Type parameterType = parameter.GetType();
+
+            if (parameterType == typeof(int))
+            {
+                int id = (int)(object)parameter;
+                if (Events.ContainsKey(id)) return true;
+                return false;
+            }
+            else if (parameterType == typeof(string))
+            {
+                string name = (string)(object)parameter;
+                foreach (KeyValuePair<int, Event> kvpEvent in Events)
+                {
+                    if (kvpEvent.Value.Name == name)
+                    {
+                        return true;
+                    }
+                }
+                return false;
+            }
             return false;
+        }
+
+        public void ViewEventsByName(string name)
+        {
+            foreach (Event item in Events.Values)
+            {
+                if (item.Name == name)
+                {
+                    item.PrintEventInfo();
+                }
+            }
         }
     }
 }
