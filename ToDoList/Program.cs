@@ -33,18 +33,21 @@ while (true)
         //Add task
         Dictionary<string, string> eventInfo = ConsoleHandler.CreateEvent();
         person.AddEvent(eventInfo["name"], eventInfo["dateTime"], eventInfo["priority"]);
+        Console.Clear();
     }
     else if (option == "2")
     {
         //Edit task
         Dictionary<string, string> eventInfo = ConsoleHandler.EditEvent();
         person.EditEvent(eventInfo);
+        Console.Clear();
     }
     else if (option == "3")
     {
         //Delete task
         string nameEventToDelete = ConsoleHandler.RemoveEvent();
         person.RemoveEvent(nameEventToDelete);
+        Console.Clear();
     }
     else if (option == "4")
     {
@@ -55,6 +58,5 @@ while (true)
     {
         break;
     }
-
     fileHandler.Write(JsonConvert.SerializeObject(person, jsonSettings));   
 }

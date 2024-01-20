@@ -47,7 +47,6 @@ namespace ToDoList.Classes
             foreach (Event item in Events.Values)
             {
                 item.PrintEventInfo();
-                Console.WriteLine("test");
             }
         }
     }
