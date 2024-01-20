@@ -115,10 +115,39 @@ namespace ToDoList.Classes
             return eventInfo;
         }
 
-        public static Dictionary<string, string> EditEvent()
+        public static Dictionary<string, string> EditEvent(Person person)
         {
             Console.WriteLine("Type event's id you want to edit");
-            string idEditedEvent = Console.ReadLine();
+            string idEditedEvent = "";
+            bool success = true;
+            while (true)
+            {
+                idEditedEvent = Console.ReadLine();
+                try
+                {
+                    Int32.Parse(idEditedEvent);
+                }
+                catch
+                {
+                    success = false;
+                }
+
+                if (success)
+                {
+                    if(person.EventExists(Int32.Parse(idEditedEvent)))
+                    {
+                        break;
+                    }
+                    else
+                    {
+                        Console.WriteLine("Event with this id doesn't exist");
+                    }
+                }
+                else
+                {
+                    Console.WriteLine("Not valid id format");
+                }
+            }
 
             Dictionary<string, string> eventInfo = CreateEvent();
             eventInfo.Add("idEditedEvent", idEditedEvent);

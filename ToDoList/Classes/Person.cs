@@ -54,5 +54,11 @@ namespace ToDoList.Classes
         {
             return Events.Count;
         }
+
+        public bool EventExists(int id)
+        {
+            if (Events.ContainsKey(id)) return true;
+            return false;
+        }
     }
 }

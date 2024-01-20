@@ -38,7 +38,7 @@ while (true)
     else if (option == "2")
     {
         //Edit task
-        Dictionary<string, string> eventInfo = ConsoleHandler.EditEvent();
+        Dictionary<string, string> eventInfo = ConsoleHandler.EditEvent(person);
         person.EditEvent(eventInfo);
         Console.Clear();
     }
