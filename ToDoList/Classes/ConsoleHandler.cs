@@ -43,18 +43,18 @@ namespace ToDoList.Classes
 
         public static Dictionary<string, string> EditEvent()
         {
-            Console.WriteLine("Type event's name you want to delete");
-            string editedEvent = Console.ReadLine();
+            Console.WriteLine("Type event's id you want to delete");
+            string idEditedEvent = Console.ReadLine();
 
             Dictionary<string, string> eventInfo = CreateEvent();
-            eventInfo.Add("editedEvent", editedEvent);
+            eventInfo.Add("idEditedEvent", idEditedEvent);
 
             return eventInfo;
         }
 
         public static string RemoveEvent()
         {
-            Console.WriteLine("Type event's name you want to delete");
+            Console.WriteLine("Type event's id you want to delete");
             return Console.ReadLine();
         }
     }

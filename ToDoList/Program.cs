@@ -32,7 +32,7 @@ while (true)
     {
         //Add task
         Dictionary<string, string> eventInfo = ConsoleHandler.CreateEvent();
-        person.AddEvent(eventInfo["name"], eventInfo["dateTime"], eventInfo["priority"]);
+        person.AddEvent(person.GetCountEvents() + 1, eventInfo);
         Console.Clear();
     }
     else if (option == "2")
@@ -45,8 +45,8 @@ while (true)
     else if (option == "3")
     {
         //Delete task
-        string nameEventToDelete = ConsoleHandler.RemoveEvent();
-        person.RemoveEvent(nameEventToDelete);
+        string IdEventToDelete = ConsoleHandler.RemoveEvent();
+        person.RemoveEvent(Int32.Parse(IdEventToDelete));
         Console.Clear();
     }
     else if (option == "4")

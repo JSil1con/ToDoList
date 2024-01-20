@@ -11,7 +11,7 @@ namespace ToDoList.Classes
     internal class Person
     {
         public string Name { get; set; }
-        public Dictionary<string, Event> Events { get; set; } = new Dictionary<string, Event>();
+        public Dictionary<int, Event> Events { get; set; } = new Dictionary<int, Event>();
 
         public Person(string name)
         {
@@ -19,27 +19,27 @@ namespace ToDoList.Classes
         }
 
         [JsonConstructor]
-        public Person(string name, Dictionary<string, Event> events)
+        public Person(string name, Dictionary<int, Event> events)
         {
             Name = name;
             Events = events;
         }
 
-        public void AddEvent(string nameEvent, string dateTime, string priority)
+        public void AddEvent(int id, Dictionary<string, string> eventInfo)
         {
             string dateTimeFormat = "dd.MM.yyyy HH:mm:ss";
-            Events.Add(nameEvent, new Event(nameEvent, DateTime.ParseExact(dateTime, dateTimeFormat, CultureInfo.InvariantCulture), priority));
+            Events.Add(id, new Event(id, eventInfo["name"], DateTime.ParseExact(eventInfo["dateTime"], dateTimeFormat, CultureInfo.InvariantCulture), eventInfo["priority"]));
         }
 
         public void EditEvent(Dictionary<string, string> eventInfo)
         {
-            RemoveEvent(eventInfo["editedEvent"]);
-            AddEvent(eventInfo["name"], eventInfo["dateTime"], eventInfo["priority"]);
+            RemoveEvent(Int32.Parse(eventInfo["idEditedEvent"]));
+            AddEvent(Int32.Parse(eventInfo["idEditedEvent"]), eventInfo);
         }
 
-        public void RemoveEvent(string nameEvent)
+        public void RemoveEvent(int idEvent)
         {
-            Events.Remove(nameEvent);
+            Events.Remove(idEvent);
         }
 
         public void ViewTasks()
@@ -48,6 +48,11 @@ namespace ToDoList.Classes
             {
                 item.PrintEventInfo();
             }
+        }
+
+        public int GetCountEvents()
+        {
+            return Events.Count;
         }
     }
 }
