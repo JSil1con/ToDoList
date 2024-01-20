@@ -50,23 +50,74 @@ namespace ToDoList.Classes
 
         public static Dictionary<string, string> CreateEvent()
         {
+            string dateTimeFormat = "dd.MM.yyyy HH:mm";
+
             Dictionary<string, string> eventInfo = new Dictionary<string, string>();
 
             Console.WriteLine("Type event's name");
-            eventInfo.Add("name", Console.ReadLine());
+            string name = "";
+            while (true)
+            {
+                name = Console.ReadLine();
+                if (name.Length > 0)
+                {
+                    break;
+                }
+                Console.WriteLine("Name can not be empty");
+            }
 
-            Console.WriteLine("Type event's date (dd.MM.yyyy HH:mm:ss:)");
-            eventInfo.Add("dateTime", Console.ReadLine());
+            eventInfo.Add("name", name);
 
-            Console.WriteLine("Type event's priority (can be empty)");
-            eventInfo.Add("priority", Console.ReadLine());
+            Console.WriteLine("Type event's date (dd.MM.yyyy HH:mm)");
+            string dateTime = "";
+            while (true)
+            {
+                bool success = true;
+                try
+                {
+                    dateTime = Console.ReadLine();
+                    DateTime.ParseExact(dateTime, dateTimeFormat, CultureInfo.InvariantCulture);
+                }
+                catch
+                {
+                    success = false;
+                }
+
+                if (success)
+                {
+                    break;
+                }
+                Console.WriteLine("Correct format is: [dd.MM.yyyy HH:mm]");
+            }         
+            eventInfo.Add("dateTime", dateTime);
+
+            Console.WriteLine("Type event's priority");
+            string priority = "";
+            string[] allowedPriorities = { "low", "medium", "high" };
+            while (true)
+            {
+                priority = Console.ReadLine();
+                if (priority.Length > 0)
+                {
+                    if (allowedPriorities.Contains(priority))
+                    {
+                        break;
+                    }
+                    Console.WriteLine("Only low/medium/high are allowed");
+                }
+                else
+                {
+                    Console.WriteLine("Priority can not be empty");
+                }
+            }
+            eventInfo.Add("priority", priority);
 
             return eventInfo;
         }
 
         public static Dictionary<string, string> EditEvent()
         {
-            Console.WriteLine("Type event's id you want to delete");
+            Console.WriteLine("Type event's id you want to edit");
             string idEditedEvent = Console.ReadLine();
 
             Dictionary<string, string> eventInfo = CreateEvent();

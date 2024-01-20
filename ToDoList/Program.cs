@@ -52,6 +52,7 @@ while (true)
     else if (option == "4")
     {
         //View tasks
+        Console.Clear();
         person.ViewTasks();
     }
     else if (option == "5")

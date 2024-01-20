@@ -27,7 +27,7 @@ namespace ToDoList.Classes
 
         public void AddEvent(int id, Dictionary<string, string> eventInfo)
         {
-            string dateTimeFormat = "dd.MM.yyyy HH:mm:ss";
+            string dateTimeFormat = "dd.MM.yyyy HH:mm";
             Events.Add(id, new Event(id, eventInfo["name"], DateTime.ParseExact(eventInfo["dateTime"], dateTimeFormat, CultureInfo.InvariantCulture), eventInfo["priority"]));
         }
 
