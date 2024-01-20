@@ -45,7 +45,7 @@ while (true)
     else if (option == "3")
     {
         //Delete task
-        string IdEventToDelete = ConsoleHandler.RemoveEvent();
+        string IdEventToDelete = ConsoleHandler.RemoveEvent(person);
         person.RemoveEvent(Int32.Parse(IdEventToDelete));
         Console.Clear();
     }

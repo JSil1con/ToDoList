@@ -155,10 +155,40 @@ namespace ToDoList.Classes
             return eventInfo;
         }
 
-        public static string RemoveEvent()
+        public static string RemoveEvent(Person person)
         {
             Console.WriteLine("Type event's id you want to delete");
-            return Console.ReadLine();
+            string idRemovedEvent = "";
+            bool success = true;
+            while (true)
+            {
+                idRemovedEvent = Console.ReadLine();
+                try
+                {
+                    Int32.Parse(idRemovedEvent);
+                }
+                catch
+                {
+                    success = false;
+                }
+
+                if (success)
+                {
+                    if (person.EventExists(Int32.Parse(idRemovedEvent)))
+                    {
+                        break;
+                    }
+                    else
+                    {
+                        Console.WriteLine("Event with this id doesn't exist");
+                    }
+                }
+                else
+                {
+                    Console.WriteLine("Not valid id format");
+                }
+            }
+            return idRemovedEvent;
         }
     }
 }
