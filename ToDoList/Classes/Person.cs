@@ -44,7 +44,8 @@ namespace ToDoList.Classes
 
         public void ViewAllEvents()
         {
-            foreach (Event item in Events.Values)
+            List<Event> sortedEvents = Events.Values.OrderBy(x => x.Date).ToList();
+            foreach (Event item in sortedEvents)
             {
                 item.PrintEventInfo();
             }
