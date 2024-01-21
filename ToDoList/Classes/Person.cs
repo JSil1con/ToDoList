@@ -51,6 +51,29 @@ namespace ToDoList.Classes
             }
         }
 
+        public void ViewTomorrowEvents()
+        {
+            DateTime today = DateTime.Now;
+            DateTime tomorrow = today.AddDays(1);
+
+            List<Event> tomorrowEvents = Events.Values
+                .Where(x => x.Date.Date == tomorrow.Date)
+                .OrderBy(x => x.Date)
+                .ToList();
+
+            if (tomorrowEvents.Count == 0)
+            {
+                Console.WriteLine("No events scheduled for tomorrow");
+            }
+            else
+            {
+                foreach (var item in tomorrowEvents)
+                {
+                    item.PrintEventInfo();
+                }
+            }
+        }
+
         public int GetCountEvents()
         {
             return Events.Count;

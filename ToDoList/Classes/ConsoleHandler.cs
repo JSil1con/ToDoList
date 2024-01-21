@@ -23,7 +23,8 @@ namespace ToDoList.Classes
             Console.WriteLine("3) Remove task");
             Console.WriteLine("4) View all tasks");
             Console.WriteLine("5) View tasks by name");
-            Console.WriteLine("6) End");
+            Console.WriteLine("6) View tomorrow tasks");
+            Console.WriteLine("7) End");
             while (true)
             {
                 bool success = true;
@@ -40,7 +41,7 @@ namespace ToDoList.Classes
                 }
                 if (success)
                 { 
-                    if (Int32.Parse(option) >= 0 && Int32.Parse(option) <= 6)
+                    if (Int32.Parse(option) >= 0 && Int32.Parse(option) <= 7)
                     {
                         return option;
                     }

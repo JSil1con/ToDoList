@@ -64,6 +64,11 @@ while (true)
     }
     else if (option == "6")
     {
+        Console.Clear();
+        person.ViewTomorrowEvents();
+    }
+    else if (option == "7")
+    {
         break;
     }
     fileHandler.Write(JsonConvert.SerializeObject(person, jsonSettings));   
