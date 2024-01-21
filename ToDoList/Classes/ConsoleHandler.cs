@@ -14,7 +14,18 @@ namespace ToDoList.Classes
         public static string GetName()
         {
             Console.Write("Type your name => ");
-            return Console.ReadLine();
+            while (true)
+            {
+                string name = Console.ReadLine();
+                if (name == null || name == "")
+                {
+                    Console.WriteLine("Name can't be empty");
+                }
+                else
+                {
+                    return name;
+                }
+            }
         }
 
         //Write all options to the console
