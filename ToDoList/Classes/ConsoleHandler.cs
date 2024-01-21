@@ -10,12 +10,14 @@ namespace ToDoList.Classes
 {
     static class ConsoleHandler
     {
+        //Get person's name
         public static string GetName()
         {
             Console.Write("Type your name => ");
             return Console.ReadLine();
         }
 
+        //Write all options to the console
         public static string GetOptions()
         {
             Console.WriteLine("1) Add task");
@@ -27,6 +29,7 @@ namespace ToDoList.Classes
             Console.WriteLine("7) End");
             while (true)
             {
+                //Validation
                 bool success = true;
                 string option = "";
                 try
@@ -36,6 +39,7 @@ namespace ToDoList.Classes
                 }
                 catch
                 {
+                    //Given input is string
                     Console.WriteLine("It has to be number");
                     success = false;
                 }
@@ -45,17 +49,20 @@ namespace ToDoList.Classes
                     {
                         return option;
                     }
-                    Console.WriteLine("Only 0/1/2/3/4/5 are allowed");
+                    //It is another number than allowed number
+                    Console.WriteLine("Only 0/1/2/3/4/5/6/7 are allowed");
                 }
             }
         }
 
+        //Get informations about created event
         public static Dictionary<string, string> CreateEvent()
         {
             string dateTimeFormat = "dd.MM.yyyy HH:mm";
 
             Dictionary<string, string> eventInfo = new Dictionary<string, string>();
 
+            //Event' name
             Console.WriteLine("Type event's name");
             string name = "";
             while (true)
@@ -70,6 +77,7 @@ namespace ToDoList.Classes
 
             eventInfo.Add("name", name);
 
+            //Event' date
             Console.WriteLine("Type event's date (dd.MM.yyyy HH:mm)");
             string dateTime = "";
             while (true)
@@ -93,22 +101,25 @@ namespace ToDoList.Classes
             }         
             eventInfo.Add("dateTime", dateTime);
 
+            //Event' Priority
             Console.WriteLine("Type event's priority");
             string priority = "";
             string[] allowedPriorities = { "low", "medium", "high" };
             while (true)
             {
-                priority = Console.ReadLine();
+                priority = Console.ReadLine().ToLower();
                 if (priority.Length > 0)
                 {
                     if (allowedPriorities.Contains(priority))
                     {
                         break;
                     }
+                    //Another string than low/medium/high
                     Console.WriteLine("Only low/medium/high are allowed");
                 }
                 else
                 {
+                    //Input is empty
                     Console.WriteLine("Priority can not be empty");
                 }
             }
@@ -117,6 +128,7 @@ namespace ToDoList.Classes
             return eventInfo;
         }
 
+        //Get informations about edited event
         public static Dictionary<string, string> EditEvent(Person person)
         {
             Console.WriteLine("Type event's id you want to edit");
@@ -142,11 +154,13 @@ namespace ToDoList.Classes
                     }
                     else
                     {
+                        //Event with given id doesn't exist
                         Console.WriteLine("Event with this id doesn't exist");
                     }
                 }
                 else
                 {
+                    //Input isn't int
                     Console.WriteLine("Not valid id format");
                 }
             }
@@ -157,6 +171,7 @@ namespace ToDoList.Classes
             return eventInfo;
         }
 
+        //Get informations about removed event
         public static string RemoveEvent(Person person)
         {
             Console.WriteLine("Type event's id you want to delete");
@@ -182,17 +197,20 @@ namespace ToDoList.Classes
                     }
                     else
                     {
+                        //Event with this id doesn't exist
                         Console.WriteLine("Event with this id doesn't exist");
                     }
                 }
                 else
                 {
+                    //Input isn't int
                     Console.WriteLine("Not valid id format");
                 }
             }
             return idRemovedEvent;
         }
 
+        //Get informations about searched event
         public static string GetEventsByName(Person person)
         {
             Console.WriteLine("Entry event's name you are looking for");
@@ -204,6 +222,7 @@ namespace ToDoList.Classes
                 {
                     return taskName;
                 }
+                //Event with this id doesn't exist
                 Console.WriteLine("This event doesn't exist");
             }
         }

@@ -17,12 +17,14 @@ namespace ToDoList.Classes
             _path = path;
         }
 
+        //Static function if given file exists
         public static bool FileExists(string path)
         {
             if (File.Exists(path)) return true;
             return false;
         }
 
+        //Write to the file
         public void Write(string content)
         {
             using (StreamWriter writer = new StreamWriter(_path))
@@ -31,17 +33,20 @@ namespace ToDoList.Classes
             }
         }
 
+        //Read the file
         public static string Read(string path)
         {
             return File.ReadAllText(path);
         }
-
+        
+        //Static funtion if given file is empty
         public static bool IsEmpty(string path)
         {
             if (new FileInfo(path).Length > 0) return false;
             return true;
         }
 
+        //Read the file
         public string Read()
         {
             return File.ReadAllText(_path);

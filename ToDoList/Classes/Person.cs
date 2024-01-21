@@ -25,12 +25,14 @@ namespace ToDoList.Classes
             Events = events;
         }
 
+        //Add event to events dictionary
         public void AddEvent(int id, Dictionary<string, string> eventInfo)
         {
             string dateTimeFormat = "dd.MM.yyyy HH:mm";
             Events.Add(id, new Event(id, eventInfo["name"], DateTime.ParseExact(eventInfo["dateTime"], dateTimeFormat, CultureInfo.InvariantCulture), eventInfo["priority"]));
         }
 
+        //Edit event - delete event than add it
         public void EditEvent(Dictionary<string, string> eventInfo)
         {
             RemoveEvent(Int32.Parse(eventInfo["idEditedEvent"]));
@@ -42,6 +44,7 @@ namespace ToDoList.Classes
             Events.Remove(idEvent);
         }
 
+        //View all events sorted by a date
         public void ViewAllEvents()
         {
             List<Event> sortedEvents = Events.Values.OrderBy(x => x.Date).ToList();
@@ -51,6 +54,7 @@ namespace ToDoList.Classes
             }
         }
 
+        //View only tomorrow events
         public void ViewTomorrowEvents()
         {
             DateTime today = DateTime.Now;
@@ -79,18 +83,22 @@ namespace ToDoList.Classes
             return Events.Count;
         }
 
+        //Checks if event exists
         public bool EventExists<T>(T parameter)
         {
+            // Checks if input is string (event's name) or int (event's id)
             Type parameterType = parameter.GetType();
 
             if (parameterType == typeof(int))
             {
+                //It is int
                 int id = (int)(object)parameter;
                 if (Events.ContainsKey(id)) return true;
                 return false;
             }
             else if (parameterType == typeof(string))
             {
+                //It is string
                 string name = (string)(object)parameter;
                 foreach (KeyValuePair<int, Event> kvpEvent in Events)
                 {
@@ -104,6 +112,7 @@ namespace ToDoList.Classes
             return false;
         }
 
+        // View events by his name
         public void ViewEventsByName(string name)
         {
             foreach (Event item in Events.Values)

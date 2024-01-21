@@ -23,6 +23,7 @@ namespace ToDoList.Classes
             Date = dateTime;
         }
 
+        //Print event's info
         public void PrintEventInfo()
         {
             Console.WriteLine("id: {0} name: {1} date: {2} priority {3}", Id, Name, Date.ToString(), Priority);

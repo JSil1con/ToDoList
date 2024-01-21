@@ -5,6 +5,7 @@ using ToDoList.Classes;
 string outputPath = "output.json";
 Person person;
 
+// Json settings
 JsonSerializerSettings jsonSettings = new JsonSerializerSettings
 {
     Formatting = Formatting.Indented
@@ -13,7 +14,7 @@ JsonSerializerSettings jsonSettings = new JsonSerializerSettings
 
 while (true)
 {
-
+    //Checks if file already exists, if it doesn't - create the person
     if (FileHandler.FileExists(outputPath) && !FileHandler.IsEmpty(outputPath))
     {
         string jsonResponse = FileHandler.Read(outputPath);
@@ -24,6 +25,7 @@ while (true)
         person = new Person(ConsoleHandler.GetName());
     }
 
+    //Create the file
     FileHandler fileHandler = new FileHandler(outputPath);
 
     string option = ConsoleHandler.GetOptions();
@@ -31,6 +33,8 @@ while (true)
     if (option == "1")
     {
         //Add task
+
+        //Get information about added event
         Dictionary<string, string> eventInfo = ConsoleHandler.CreateEvent();
         person.AddEvent(person.GetCountEvents() + 1, eventInfo);
         Console.Clear();
@@ -38,6 +42,8 @@ while (true)
     else if (option == "2")
     {
         //Edit task
+
+        //Get information about edited event
         Dictionary<string, string> eventInfo = ConsoleHandler.EditEvent(person);
         person.EditEvent(eventInfo);
         Console.Clear();
@@ -45,6 +51,8 @@ while (true)
     else if (option == "3")
     {
         //Delete task
+
+        //Get information about deleted event
         string IdEventToDelete = ConsoleHandler.RemoveEvent(person);
         person.RemoveEvent(Int32.Parse(IdEventToDelete));
         Console.Clear();
@@ -58,6 +66,8 @@ while (true)
     else if (option == "5")
     {
         //View tasks by name
+
+        //Get information about viewed event
         string taskName = ConsoleHandler.GetEventsByName(person);
         Console.Clear();
         person.ViewEventsByName(taskName);
@@ -71,5 +81,7 @@ while (true)
     {
         break;
     }
+
+    //Save person to the json file
     fileHandler.Write(JsonConvert.SerializeObject(person, jsonSettings));   
 }
