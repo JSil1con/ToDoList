@@ -37,7 +37,6 @@ while (true)
         //Get information about added event
         Dictionary<string, string> eventInfo = ConsoleHandler.CreateEvent();
         person.AddEvent(person.GetCountEvents() + 1, eventInfo);
-        Console.Clear();
     }
     else if (option == "2")
     {
@@ -46,7 +45,6 @@ while (true)
         //Get information about edited event
         Dictionary<string, string> eventInfo = ConsoleHandler.EditEvent(person);
         person.EditEvent(eventInfo);
-        Console.Clear();
     }
     else if (option == "3")
     {
@@ -55,12 +53,10 @@ while (true)
         //Get information about deleted event
         string IdEventToDelete = ConsoleHandler.RemoveEvent(person);
         person.RemoveEvent(Int32.Parse(IdEventToDelete));
-        Console.Clear();
     }
     else if (option == "4")
     {
         //View all tasks
-        Console.Clear();
         person.ViewAllEvents();
     }
     else if (option == "5")
@@ -69,12 +65,10 @@ while (true)
 
         //Get information about viewed event
         string taskName = ConsoleHandler.GetEventsByName(person);
-        Console.Clear();
         person.ViewEventsByName(taskName);
     }
     else if (option == "6")
     {
-        Console.Clear();
         person.ViewTomorrowEvents();
     }
     else if (option == "7")
@@ -83,5 +77,9 @@ while (true)
     }
 
     //Save person to the json file
-    fileHandler.Write(JsonConvert.SerializeObject(person, jsonSettings));   
+    fileHandler.Write(JsonConvert.SerializeObject(person, jsonSettings));
+
+    Console.WriteLine("Press Enter to continue");
+    Console.Read();
+    Console.Clear();
 }
