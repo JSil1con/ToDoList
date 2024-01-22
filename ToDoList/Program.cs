@@ -69,10 +69,14 @@ while (true)
         //View tasks by name
 
         //Get information about viewed event
-        string taskName = ConsoleHandler.GetEventsByName(person);
-        if (taskName != "")
+        string taskName = ConsoleHandler.GetSearchedName(person);
+        if (person.EventExists(taskName))
         {
             person.ViewEventsByName(taskName);
+        }
+        else
+        {
+            Console.WriteLine("Event doesn't exist");
         }
     }
     else if (option == "6")
@@ -84,7 +88,7 @@ while (true)
         }
         else
         {
-            Console.WriteLine("Events don't exist");
+            Console.WriteLine("Event doesn't exist");
         }
     }
     else if (option == "7")

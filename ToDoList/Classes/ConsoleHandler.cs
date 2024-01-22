@@ -223,21 +223,10 @@ namespace ToDoList.Classes
         }
 
         //Get informations about searched event
-        public static string GetEventsByName(Person person)
+        public static string GetSearchedName(Person person)
         {
             Console.WriteLine("Entry event's name you are looking for");
-            string taskName = "";
-            while (true)
-            {
-                taskName = Console.ReadLine();
-                if (person.EventExists(taskName))
-                {
-                    return taskName;
-                }
-                //Event with this id doesn't exist
-                Console.WriteLine("This event doesn't exist");
-                return "";
-            }
+            return Console.ReadLine();
         }
 
         public static DateTime GetSearchedDate(Person person)
