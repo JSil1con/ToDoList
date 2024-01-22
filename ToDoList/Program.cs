@@ -48,7 +48,7 @@ while (true)
         //Edit task
 
         //Get information about edited event
-        Dictionary<string, string> eventInfo = ConsoleHandler.EditEvent(person);
+        Dictionary<string, string> eventInfo = ConsoleHandler.GetInfoAboutEdit(person);
         person.EditEvent(eventInfo);
     }
     else if (option == "3")
@@ -56,7 +56,7 @@ while (true)
         //Delete task
 
         //Get information about deleted event
-        string IdEventToDelete = ConsoleHandler.RemoveEvent(person);
+        string IdEventToDelete = ConsoleHandler.GetIdRemovedEvent(person);
         person.RemoveEvent(Int32.Parse(IdEventToDelete));
     }
     else if (option == "4")

@@ -141,7 +141,7 @@ namespace ToDoList.Classes
         }
 
         //Get informations about edited event
-        public static Dictionary<string, string> EditEvent(Person person)
+        public static Dictionary<string, string> GetInfoAboutEdit(Person person)
         {
             Console.WriteLine("Type event's id you want to edit");
             string idEditedEvent = "";
@@ -184,7 +184,7 @@ namespace ToDoList.Classes
         }
 
         //Get informations about removed event
-        public static string RemoveEvent(Person person)
+        public static string GetIdRemovedEvent(Person person)
         {
             Console.WriteLine("Type event's id you want to delete");
             string idRemovedEvent = "";
