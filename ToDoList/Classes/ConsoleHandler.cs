@@ -51,7 +51,6 @@ namespace ToDoList.Classes
                 catch
                 {
                     //Given input is string
-                    Console.WriteLine("It has to be number");
                     success = false;
                 }
                 if (success)
