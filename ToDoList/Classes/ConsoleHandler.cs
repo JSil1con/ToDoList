@@ -236,10 +236,11 @@ namespace ToDoList.Classes
                 }
                 //Event with this id doesn't exist
                 Console.WriteLine("This event doesn't exist");
+                return "";
             }
         }
 
-        public static DateTime GetEventsByDate(Person person)
+        public static DateTime GetSearchedDate(Person person)
         {
             Console.WriteLine("Entry event's date you are looking for (dd.MM.yyyy)");
             string dateTimeFormat = "dd.MM.yyyy";
@@ -260,14 +261,7 @@ namespace ToDoList.Classes
                 if (success)
                 {
                     taskDate = DateTime.ParseExact(taskDateString, dateTimeFormat, CultureInfo.InvariantCulture);
-                    if (person.EventExists(taskDate))
-                    {
-                        return taskDate;
-                    }
-                    else
-                    {
-                        Console.WriteLine("There are no events");
-                    }
+                    return taskDate;
                 }
                 else
                 {

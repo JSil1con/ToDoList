@@ -70,12 +70,22 @@ while (true)
 
         //Get information about viewed event
         string taskName = ConsoleHandler.GetEventsByName(person);
-        person.ViewEventsByName(taskName);
+        if (taskName != "")
+        {
+            person.ViewEventsByName(taskName);
+        }
     }
     else if (option == "6")
     {
-        DateTime searchedDate = ConsoleHandler.GetEventsByDate(person);
-        person.ViewEventsByDate(searchedDate);
+        DateTime searchedDate = ConsoleHandler.GetSearchedDate(person);
+        if (person.EventExists(searchedDate))
+        {
+            person.ViewEventsByDate(searchedDate);
+        }
+        else
+        {
+            Console.WriteLine("Events don't exist");
+        }
     }
     else if (option == "7")
     {
