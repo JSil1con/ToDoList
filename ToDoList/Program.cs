@@ -3,7 +3,7 @@ using System.Text.Json.Nodes;
 using ToDoList.Classes;
 
 string outputPath = "output.json";
-Person person;
+Person? person;
 
 // Json settings
 JsonSerializerSettings jsonSettings = new JsonSerializerSettings
@@ -19,6 +19,11 @@ while (true)
     {
         string jsonResponse = FileHandler.Read(outputPath);
         person = JsonConvert.DeserializeObject<Person>(jsonResponse, jsonSettings);
+
+        if (person  == null)
+        {
+            person = new Person(ConsoleHandler.GetName());
+        }
     }
     else
     {
