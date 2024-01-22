@@ -60,6 +60,7 @@ namespace ToDoList.Classes
             DateTime today = DateTime.Now;
             DateTime tomorrow = today.AddDays(1);
 
+            //List only tomorrow events
             List<Event> tomorrowEvents = Events.Values
                 .Where(x => x.Date.Date == tomorrow.Date)
                 .OrderBy(x => x.Date)
@@ -78,6 +79,7 @@ namespace ToDoList.Classes
             }
         }
 
+        //View events by given date
         public void ViewEventsByDate(DateTime searchedDate)
         {
             foreach (var item in Events)
@@ -139,7 +141,7 @@ namespace ToDoList.Classes
             return false;
         }
 
-        // View events by his name
+        // View events by name
         public void ViewEventsByName(string name)
         {
             foreach (Event item in Events.Values)

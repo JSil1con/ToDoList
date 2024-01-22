@@ -222,18 +222,20 @@ namespace ToDoList.Classes
             return idRemovedEvent;
         }
 
-        //Get informations about searched event
+        //Get event's name
         public static string GetSearchedName(Person person)
         {
             Console.WriteLine("Entry event's name you are looking for");
             return Console.ReadLine();
         }
 
+        //Get event's date
         public static DateTime GetSearchedDate(Person person)
         {
             Console.WriteLine("Entry event's date you are looking for (dd.MM.yyyy)");
             string dateTimeFormat = "dd.MM.yyyy";
             DateTime taskDate;
+            //Validation
             while (true)
             {
                 string taskDateString = Console.ReadLine();

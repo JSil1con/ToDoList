@@ -81,6 +81,8 @@ while (true)
     }
     else if (option == "6")
     {
+        //Search events by date
+
         DateTime searchedDate = ConsoleHandler.GetSearchedDate(person);
         if (person.EventExists(searchedDate))
         {
@@ -93,16 +95,19 @@ while (true)
     }
     else if (option == "7")
     {
+        //View tomorrow events
         person.ViewTomorrowEvents();
     }
     else if (option == "8")
     {
+        //End the program
         break;
     }
 
     //Save person to the json file
     fileHandler.Write(JsonConvert.SerializeObject(person, jsonSettings));
 
+    //Enter to continue
     Console.WriteLine("Press Enter to continue");
     Console.Read();
     Console.Clear();
