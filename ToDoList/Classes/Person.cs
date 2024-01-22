@@ -78,6 +78,17 @@ namespace ToDoList.Classes
             }
         }
 
+        public void ViewEventsByDate(DateTime searchedDate)
+        {
+            foreach (var item in Events)
+            {
+                if (new DateTime(item.Value.Date.Year, item.Value.Date.Month, item.Value.Date.Day) == searchedDate.Date)
+                {
+                    item.Value.PrintEventInfo();
+                }
+            }
+        }
+
         public int GetCountEvents()
         {
             return Events.Count;
@@ -92,17 +103,33 @@ namespace ToDoList.Classes
             if (parameterType == typeof(int))
             {
                 //It is int
-                int id = (int)(object)parameter;
+                int id = Int32.Parse(parameter.ToString());
                 if (Events.ContainsKey(id)) return true;
                 return false;
             }
             else if (parameterType == typeof(string))
             {
                 //It is string
-                string name = (string)(object)parameter;
+                string name = parameter.ToString();
                 foreach (KeyValuePair<int, Event> kvpEvent in Events)
                 {
                     if (kvpEvent.Value.Name == name)
+                    {
+                        return true;
+                    }
+                }
+                return false;
+            }
+            else if (parameterType == typeof(DateTime))
+            {
+                //It is string
+                DateTime eventsDate = (DateTime)(object)parameter;
+
+                List<Event> searchedEvents = new List<Event>();
+
+                foreach (var item in Events)
+                {
+                    if (item.Value.Date.Date == eventsDate)
                     {
                         return true;
                     }

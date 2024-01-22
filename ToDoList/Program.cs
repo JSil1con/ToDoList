@@ -74,9 +74,14 @@ while (true)
     }
     else if (option == "6")
     {
-        person.ViewTomorrowEvents();
+        DateTime searchedDate = ConsoleHandler.GetEventsByDate(person);
+        person.ViewEventsByDate(searchedDate);
     }
     else if (option == "7")
+    {
+        person.ViewTomorrowEvents();
+    }
+    else if (option == "8")
     {
         break;
     }

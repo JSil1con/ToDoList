@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Globalization;
 using Microsoft.VisualBasic.FileIO;
+using System.Runtime.Serialization;
 
 namespace ToDoList.Classes
 {
@@ -36,8 +37,9 @@ namespace ToDoList.Classes
             Console.WriteLine("3) Remove task");
             Console.WriteLine("4) View all tasks");
             Console.WriteLine("5) View tasks by name");
-            Console.WriteLine("6) View tomorrow tasks");
-            Console.WriteLine("7) End");
+            Console.WriteLine("6) View tasks by date");
+            Console.WriteLine("7) View tomorrow tasks");
+            Console.WriteLine("8) End");
             while (true)
             {
                 //Validation
@@ -55,7 +57,7 @@ namespace ToDoList.Classes
                 }
                 if (success)
                 { 
-                    if (Int32.Parse(option) >= 0 && Int32.Parse(option) <= 7)
+                    if (Int32.Parse(option) >= 0 && Int32.Parse(option) <= 8)
                     {
                         return option;
                     }
@@ -234,6 +236,43 @@ namespace ToDoList.Classes
                 }
                 //Event with this id doesn't exist
                 Console.WriteLine("This event doesn't exist");
+            }
+        }
+
+        public static DateTime GetEventsByDate(Person person)
+        {
+            Console.WriteLine("Entry event's date you are looking for (dd.MM.yyyy)");
+            string dateTimeFormat = "dd.MM.yyyy";
+            DateTime taskDate;
+            while (true)
+            {
+                string taskDateString = Console.ReadLine();
+                bool success = true;
+                try
+                {
+                    DateTime.ParseExact(taskDateString, dateTimeFormat, CultureInfo.InvariantCulture);
+                }
+                catch
+                {
+                    success = false;
+                }
+
+                if (success)
+                {
+                    taskDate = DateTime.ParseExact(taskDateString, dateTimeFormat, CultureInfo.InvariantCulture);
+                    if (person.EventExists(taskDate))
+                    {
+                        return taskDate;
+                    }
+                    else
+                    {
+                        Console.WriteLine("There are no events");
+                    }
+                }
+                else
+                {
+                    Console.WriteLine("Enter the valid date");
+                }
             }
         }
     }
