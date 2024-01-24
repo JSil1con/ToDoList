@@ -158,27 +158,15 @@ namespace ToDoList.Classes
         public static int GetIdRemovedEvent(Person person)
         {
             Console.WriteLine("Type event's id you want to delete");
-            string idRemovedEvent = "";
-            bool success = true;
             while (true)
             {
-                idRemovedEvent = Console.ReadLine();
-                try
-                {
-                    Int32.Parse(idRemovedEvent);
-                }
-                catch
-                {
-                    success = false;
-                }
-
+                bool success = Int32.TryParse(Console.ReadLine(), out int idRemovedEvent);
                 if (success)
                 {
-                    return Int32.Parse(idRemovedEvent);
+                    return idRemovedEvent;
                 }
                 else
                 {
-                    //Input isn't int
                     Console.WriteLine("Not valid id format");
                 }
             }
@@ -200,20 +188,9 @@ namespace ToDoList.Classes
             //Validation
             while (true)
             {
-                string taskDateString = Console.ReadLine();
-                bool success = true;
-                try
-                {
-                    DateTime.ParseExact(taskDateString, dateTimeFormat, CultureInfo.InvariantCulture);
-                }
-                catch
-                {
-                    success = false;
-                }
-
+                bool success = DateTime.TryParseExact(Console.ReadLine(), dateTimeFormat, CultureInfo.InvariantCulture, DateTimeStyles.None, out taskDate);
                 if (success)
                 {
-                    taskDate = DateTime.ParseExact(taskDateString, dateTimeFormat, CultureInfo.InvariantCulture);
                     return taskDate;
                 }
                 else
