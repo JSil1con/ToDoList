@@ -42,27 +42,21 @@ namespace ToDoList.Classes
             Console.WriteLine("8) End");
             while (true)
             {
-                //Validation
-                bool success = true;
-                string option = "";
-                try
-                {
-                    option = Console.ReadLine();
-                    Int32.Parse(option);
-                }
-                catch
-                {
-                    //Given input is string
-                    success = false;
-                }
+                bool success = Int32.TryParse(Console.ReadLine(), out int option);
                 if (success)
-                { 
-                    if (Int32.Parse(option) >= 0 && Int32.Parse(option) <= 8)
+                {
+                    if (option >= 1 && option <= 8)
                     {
-                        return option;
+                        return option.ToString();
                     }
-                    //It is another number than allowed number
-                    Console.WriteLine("Only 0/1/2/3/4/5/6/7 are allowed");
+                    else
+                    {
+                        Console.WriteLine("There is no option for " + option.ToString());
+                    }
+                }
+                else
+                {
+                    Console.WriteLine("Please enter the number");
                 }
             }
         }
