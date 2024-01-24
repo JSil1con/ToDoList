@@ -141,7 +141,7 @@ namespace ToDoList.Classes
         }
 
         //Get informations about edited event
-        public static Dictionary<string, string> GetInfoAboutEdit(Person person)
+        public static int GetIdEditedEvent(Person person)
         {
             Console.WriteLine("Type event's id you want to edit");
             string idEditedEvent = "";
@@ -160,15 +160,7 @@ namespace ToDoList.Classes
 
                 if (success)
                 {
-                    if(person.EventExists(Int32.Parse(idEditedEvent)))
-                    {
-                        break;
-                    }
-                    else
-                    {
-                        //Event with given id doesn't exist
-                        Console.WriteLine("Event with this id doesn't exist");
-                    }
+                    return Int32.Parse(idEditedEvent);
                 }
                 else
                 {
@@ -176,10 +168,12 @@ namespace ToDoList.Classes
                     Console.WriteLine("Not valid id format");
                 }
             }
+        }
 
+        public static Dictionary<string, string> GetInfoEditedEvent(string idEditedEvent)
+        {
             Dictionary<string, string> eventInfo = CreateEvent();
             eventInfo.Add("idEditedEvent", idEditedEvent);
-
             return eventInfo;
         }
 

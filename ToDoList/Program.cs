@@ -1,4 +1,5 @@
 ﻿using Newtonsoft.Json;
+using System.Reflection;
 using System.Text.Json.Nodes;
 using ToDoList.Classes;
 
@@ -48,8 +49,16 @@ while (true)
         //Edit task
 
         //Get information about edited event
-        Dictionary<string, string> eventInfo = ConsoleHandler.GetInfoAboutEdit(person);
-        person.EditEvent(eventInfo);
+        int eventEditedId = ConsoleHandler.GetIdEditedEvent(person);
+        if (person.EventExists(eventEditedId))
+        {
+            Dictionary<string, string> infoEditedEvent = ConsoleHandler.GetInfoEditedEvent(eventEditedId.ToString());
+            person.EditEvent(infoEditedEvent);
+        }
+        else
+        {
+            Console.WriteLine("Event doesn't exist");
+        }    
     }
     else if (option == "3")
     {
