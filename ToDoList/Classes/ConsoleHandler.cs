@@ -17,6 +17,7 @@ namespace ToDoList.Classes
             Console.Write("Type your name => ");
             while (true)
             {
+                //Validation
                 string name = Console.ReadLine();
                 if (name == null || name == "")
                 {
@@ -42,20 +43,24 @@ namespace ToDoList.Classes
             Console.WriteLine("8) End");
             while (true)
             {
+                //Validation
                 bool success = Int32.TryParse(Console.ReadLine(), out int option);
                 if (success)
                 {
                     if (option >= 1 && option <= 8)
                     {
+                        //Option is in the range
                         return option.ToString();
                     }
                     else
                     {
+                        //Option is not in the range
                         Console.WriteLine("There is no option for " + option.ToString());
                     }
                 }
                 else
                 {
+                    //Given input isn't number
                     Console.WriteLine("Please enter the number");
                 }
             }
@@ -74,10 +79,14 @@ namespace ToDoList.Classes
             while (true)
             {
                 name = Console.ReadLine();
+
+                //Name validation - name can't be empty
                 if (name.Length > 0)
                 {
                     break;
                 }
+
+                //Name is empty
                 Console.WriteLine("Name can not be empty");
             }
 
@@ -89,6 +98,7 @@ namespace ToDoList.Classes
             string dateTimeStr;
             while (true)
             {
+                //Date validation
                 dateTimeStr = Console.ReadLine();
                 bool success = DateTime.TryParseExact(dateTimeStr, dateTimeFormat, CultureInfo.InvariantCulture, DateTimeStyles.None, out dateTime);
                 if (success)
@@ -97,6 +107,7 @@ namespace ToDoList.Classes
                 }
                 else
                 {
+                    //Invalid format
                     Console.WriteLine("Enter the valid date (dd.MM.yyyy HH:mm)");
                 }
             }         
@@ -109,10 +120,13 @@ namespace ToDoList.Classes
             while (true)
             {
                 priority = Console.ReadLine().ToLower();
+
+                //Priority validation
                 if (priority.Length > 0)
                 {
                     if (allowedPriorities.Contains(priority))
                     {
+                        //Priority accepted
                         break;
                     }
                     //Another string than low/medium/high
@@ -129,12 +143,13 @@ namespace ToDoList.Classes
             return eventInfo;
         }
 
-        //Get informations about edited event
+        //Get edited event's id
         public static int GetIdEditedEvent(Person person)
         {
             Console.WriteLine("Type event's id you want to edit");
             while (true)
             {
+                //Int validation
                 bool success = Int32.TryParse(Console.ReadLine(), out int idEditedEvent);
                 if (success)
                 {
@@ -142,11 +157,13 @@ namespace ToDoList.Classes
                 }
                 else
                 {
+                    //Input isn't int
                     Console.WriteLine("Not valid id format");
                 }
             }
         }
 
+        //Get info about edited event
         public static Dictionary<string, string> GetInfoEditedEvent(string idEditedEvent)
         {
             Dictionary<string, string> eventInfo = CreateEvent();
@@ -154,12 +171,13 @@ namespace ToDoList.Classes
             return eventInfo;
         }
 
-        //Get informations about removed event
+        //Get removed event's id
         public static int GetIdRemovedEvent(Person person)
         {
             Console.WriteLine("Type event's id you want to delete");
             while (true)
             {
+                //Int validation
                 bool success = Int32.TryParse(Console.ReadLine(), out int idRemovedEvent);
                 if (success)
                 {

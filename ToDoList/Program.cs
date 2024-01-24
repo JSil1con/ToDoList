@@ -66,12 +66,16 @@ while (true)
 
         //Get information about deleted event
         int IdEventToDelete = ConsoleHandler.GetIdRemovedEvent(person);
+
+        //Checks if event exists
         if (person.EventExists(IdEventToDelete))
         {
+            //If it exists remove it
             person.RemoveEvent(IdEventToDelete);
         }
         else
         {
+            //If it doesn't exist
             Console.WriteLine("Event doesn't exist");
         }
     }
@@ -86,12 +90,16 @@ while (true)
 
         //Get information about viewed event
         string taskName = ConsoleHandler.GetSearchedName(person);
+
+        //Checks if event exists
         if (person.EventExists(taskName))
         {
+            //View events by name
             person.ViewEventsByName(taskName);
         }
         else
         {
+            //Events with given name don't exist
             Console.WriteLine("Event doesn't exist");
         }
     }
@@ -100,12 +108,16 @@ while (true)
         //Search events by date
 
         DateTime searchedDate = ConsoleHandler.GetSearchedDate(person);
+
+        //Checks if event exists
         if (person.EventExists(searchedDate))
         {
+            //View events by date
             person.ViewEventsByDate(searchedDate);
         }
         else
         {
+            //Events with given date don't exist
             Console.WriteLine("Event doesn't exist");
         }
     }

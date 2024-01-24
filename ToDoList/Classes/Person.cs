@@ -39,6 +39,7 @@ namespace ToDoList.Classes
             AddEvent(Int32.Parse(eventInfo["idEditedEvent"]), eventInfo);
         }
 
+        //Remove event from dictionary
         public void RemoveEvent(int idEvent)
         {
             Events.Remove(idEvent);
@@ -68,10 +69,12 @@ namespace ToDoList.Classes
 
             if (tomorrowEvents.Count == 0)
             {
+                //There are no events
                 Console.WriteLine("No events scheduled for tomorrow");
             }
             else
             {
+                //There are events
                 foreach (var item in tomorrowEvents)
                 {
                     item.PrintEventInfo();
@@ -91,6 +94,7 @@ namespace ToDoList.Classes
             }
         }
 
+        //Return count of events
         public int GetCountEvents()
         {
             return Events.Count;
@@ -124,7 +128,7 @@ namespace ToDoList.Classes
             }
             else if (parameterType == typeof(DateTime))
             {
-                //It is string
+                //It is datetime
                 DateTime eventsDate = (DateTime)(object)parameter;
 
                 List<Event> searchedEvents = new List<Event>();
