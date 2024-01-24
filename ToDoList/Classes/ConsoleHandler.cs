@@ -133,27 +133,15 @@ namespace ToDoList.Classes
         public static int GetIdEditedEvent(Person person)
         {
             Console.WriteLine("Type event's id you want to edit");
-            string idEditedEvent = "";
-            bool success = true;
             while (true)
             {
-                idEditedEvent = Console.ReadLine();
-                try
-                {
-                    Int32.Parse(idEditedEvent);
-                }
-                catch
-                {
-                    success = false;
-                }
-
+                bool success = Int32.TryParse(Console.ReadLine(), out int idEditedEvent);
                 if (success)
                 {
-                    return Int32.Parse(idEditedEvent);
+                    return idEditedEvent;
                 }
                 else
                 {
-                    //Input isn't int
                     Console.WriteLine("Not valid id format");
                 }
             }
