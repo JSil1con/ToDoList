@@ -85,27 +85,22 @@ namespace ToDoList.Classes
 
             //Event' date
             Console.WriteLine("Type event's date (dd.MM.yyyy HH:mm)");
-            string dateTime = "";
+            DateTime dateTime;
+            string dateTimeStr;
             while (true)
             {
-                bool success = true;
-                try
-                {
-                    dateTime = Console.ReadLine();
-                    DateTime.ParseExact(dateTime, dateTimeFormat, CultureInfo.InvariantCulture);
-                }
-                catch
-                {
-                    success = false;
-                }
-
+                dateTimeStr = Console.ReadLine();
+                bool success = DateTime.TryParseExact(dateTimeStr, dateTimeFormat, CultureInfo.InvariantCulture, DateTimeStyles.None, out dateTime);
                 if (success)
                 {
                     break;
                 }
-                Console.WriteLine("Correct format is: [dd.MM.yyyy HH:mm]");
+                else
+                {
+                    Console.WriteLine("Enter the valid date (dd.MM.yyyy HH:mm)");
+                }
             }         
-            eventInfo.Add("dateTime", dateTime);
+            eventInfo.Add("dateTime", dateTimeStr);
 
             //Event' Priority
             Console.WriteLine("Type event's priority");
