@@ -184,7 +184,7 @@ namespace ToDoList.Classes
         }
 
         //Get informations about removed event
-        public static string GetIdRemovedEvent(Person person)
+        public static int GetIdRemovedEvent(Person person)
         {
             Console.WriteLine("Type event's id you want to delete");
             string idRemovedEvent = "";
@@ -203,15 +203,7 @@ namespace ToDoList.Classes
 
                 if (success)
                 {
-                    if (person.EventExists(Int32.Parse(idRemovedEvent)))
-                    {
-                        break;
-                    }
-                    else
-                    {
-                        //Event with this id doesn't exist
-                        Console.WriteLine("Event with this id doesn't exist");
-                    }
+                    return Int32.Parse(idRemovedEvent);
                 }
                 else
                 {
@@ -219,7 +211,6 @@ namespace ToDoList.Classes
                     Console.WriteLine("Not valid id format");
                 }
             }
-            return idRemovedEvent;
         }
 
         //Get event's name

@@ -56,8 +56,15 @@ while (true)
         //Delete task
 
         //Get information about deleted event
-        string IdEventToDelete = ConsoleHandler.GetIdRemovedEvent(person);
-        person.RemoveEvent(Int32.Parse(IdEventToDelete));
+        int IdEventToDelete = ConsoleHandler.GetIdRemovedEvent(person);
+        if (person.EventExists(IdEventToDelete))
+        {
+            person.RemoveEvent(IdEventToDelete);
+        }
+        else
+        {
+            Console.WriteLine("Event doesn't exist");
+        }
     }
     else if (option == "4")
     {
