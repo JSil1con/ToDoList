@@ -144,7 +144,7 @@ namespace ToDoList.Classes
         }
 
         //Get edited event's id
-        public static int GetIdEditedEvent(Person person)
+        public static int GetIdEditedEvent()
         {
             Console.WriteLine("Type event's id you want to edit");
             while (true)
@@ -172,7 +172,7 @@ namespace ToDoList.Classes
         }
 
         //Get removed event's id
-        public static int GetIdRemovedEvent(Person person)
+        public static int GetIdRemovedEvent()
         {
             Console.WriteLine("Type event's id you want to delete");
             while (true)
@@ -191,14 +191,14 @@ namespace ToDoList.Classes
         }
 
         //Get event's name
-        public static string GetSearchedName(Person person)
+        public static string GetSearchedName()
         {
             Console.WriteLine("Entry event's name you are looking for");
             return Console.ReadLine();
         }
 
         //Get event's date
-        public static DateTime GetSearchedDate(Person person)
+        public static DateTime GetSearchedDate()
         {
             Console.WriteLine("Entry event's date you are looking for (dd.MM.yyyy)");
             string dateTimeFormat = "dd.MM.yyyy";
