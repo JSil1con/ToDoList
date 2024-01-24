@@ -49,7 +49,7 @@ while (true)
         //Edit task
 
         //Get information about edited event
-        int eventEditedId = ConsoleHandler.GetIdEditedEvent(person);
+        int eventEditedId = ConsoleHandler.GetIdEditedEvent();
         if (person.EventExists(eventEditedId))
         {
             Dictionary<string, string> infoEditedEvent = ConsoleHandler.GetInfoEditedEvent(eventEditedId.ToString());
@@ -65,7 +65,7 @@ while (true)
         //Delete task
 
         //Get information about deleted event
-        int IdEventToDelete = ConsoleHandler.GetIdRemovedEvent(person);
+        int IdEventToDelete = ConsoleHandler.GetIdRemovedEvent();
 
         //Checks if event exists
         if (person.EventExists(IdEventToDelete))
@@ -89,7 +89,7 @@ while (true)
         //View tasks by name
 
         //Get information about viewed event
-        string taskName = ConsoleHandler.GetSearchedName(person);
+        string taskName = ConsoleHandler.GetSearchedName();
 
         //Checks if event exists
         if (person.EventExists(taskName))
@@ -107,7 +107,7 @@ while (true)
     {
         //Search events by date
 
-        DateTime searchedDate = ConsoleHandler.GetSearchedDate(person);
+        DateTime searchedDate = ConsoleHandler.GetSearchedDate();
 
         //Checks if event exists
         if (person.EventExists(searchedDate))
