@@ -81,13 +81,13 @@ namespace ToDoList.Classes
                 name = Console.ReadLine();
 
                 //Name validation - name can't be empty
-                if (name.Length > 0)
+                if (name.Length > 0 && name.Length < 50)
                 {
                     break;
                 }
 
-                //Name is empty
-                Console.WriteLine("Name can not be empty");
+                //Name character - from 0 to 50
+                Console.WriteLine("Allowed characters - 0 to 50");
             }
 
             eventInfo.Add("name", name);
